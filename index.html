@@ -4,23 +4,27 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Авиабилеты</title>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+		/>
 		<link rel="stylesheet" href="/css/styles.css" />
 	</head>
 	<body>
 		<header class="header">
 			<div class="container">
 				<nav class="header_links">
-					<a href="#" class="header_link">Корпоративным клиентам</a>
-					<a href="#" class="header_link">
-						Авиабилеты <img src="/images/bullet.svg" alt="*"
-					/></a>
-					<a href="#" class="header_link"
-						>Справка <img src="/images/bullet.svg" alt="*"
-					/></a>
-					<a href="#" class="header_link">
-						<img src="/images/lang.svg" alt="*" />Русский
-						<img src="/images/bullet.svg" alt="*"
-					/></a>
+					<div class="header_menu_links">
+						<a href="#" class="header_link">Корпоративным клиентам</a>
+						<a href="#" class="header_link"> Авиабилеты </a>
+						<a href="#" class="header_link">Справка </a>
+					</div>
+					<div class="header_language_links">
+						<a href="#" class="language_image"
+							><img src="/images/lang.svg" alt="#"
+						/></a>
+						<a href="#" class="header_link"> Русский /></a>
+					</div>
 				</nav>
 				<h1>Лучшие авиабилеты по самым низким ценам</h1>
 
@@ -42,14 +46,38 @@
 					</li>
 				</ul>
 				<div class="search_of_tickets">
-					<input type="text" placeholder="Откуда" class="input_from" />
-					<input type="text" placeholder="Куда" class="input_from" />
-					<input type="text" placeholder="Туда" class="input_from" />
-					<input type="text" placeholder="Обратно" class="input_from" />
-					<select>
-						<option>1 пассажир, любой</option>
-					</select>
-					<button>Найти</button>
+					<!-- <div class="input-container">
+						<input type="text" id="inputField" required>
+						<label for="inputField">Ваш лейбл</label>
+					</div> -->
+					<div class="input_group">
+						<div class="input_container">
+							<input type="text" id="inputField_from" required />
+							<label for="inputField_from">Откуда</label>
+						</div>
+						<div class="input_container">
+							<input type="text" id="inputField_to" required />
+							<label for="inputField_to">Куда</label>
+						</div>
+						<div class="input_container">
+							<input type="text" id="inputField_first_date" required />
+							<label for="inputField_first_date">Туда</label>
+						</div>
+						<div class="input_container">
+							<input type="text" id="inputField_last_date" required />
+							<label for="inputField_last_date">Обратно</label>
+						</div>
+						<!-- <select>
+							<option>1 пассажир, любой</option>
+						</select> -->
+						<div class="info_about_passenger">
+							<div>Пассажиры, класс</div>
+							<!-- наверное имеет смысл сделать так вместо label, потом на info_about_passenger навесить событие onclick и по нему открывать форму выбора пассажиров-->
+							<span class="quantity_of_passengers">1 пассажир</span>,
+							<span class="class_of_passenger">любой</span>
+						</div>
+					</div>
+					<button class="search_button">Найти</button>
 				</div>
 				<a href="#" class="difficult_route"
 					><img src="/images/multiroute.svg" alt="*" /> Сложный маршрут</a
@@ -63,14 +91,12 @@
 					<section class="telegram_section">
 						<div class="telegram_section_text_information">
 							<h2>Управляйте вашими билетами в Telegram</h2>
-							<p>
-								<img src="/images/check-smooth.svg" alt="*" /> Доступ с билетом
-								и кабинету
-								<img src="/images/check-smooth.svg" alt="*" /> Агентская
-								поддержка<br />
-								<img src="/images/check-smooth.svg" alt="*" /> FAQ
-							</p>
-							<button>Посмотреть возможности</button>
+							<ul>
+								<li>Доступ с билетом и кабинету</li>
+								<li>Агентская поддержка<br /></li>
+								<li>FAQ</li>
+							</ul>
+							<a href="#">Посмотреть возможности</a>
 						</div>
 						<div class="telegram_section_image_cont">
 							<img src="/images/telegram-ru.png" alt="" />
@@ -79,11 +105,10 @@
 					<section class="bus_tickets">
 						<div class="bus_tickets_text_information">
 							<h2>Билеты на автобус по Китаю и Европе</h2>
-							<p>
-								<img src="/images/check-smooth.svg" alt="*" /> Удобное сравнение
-								цен <img src="/images/check-smooth.svg" alt="*" /> Актуальное
-								расписание
-							</p>
+							<ul>
+								<li>Удобное сравнение цен</li>
+								<li>Актуальное расписание</li>
+							</ul>
 							<button>Найти билеты</button>
 						</div>
 						<div class="bus_tickets_image_cont">
@@ -92,88 +117,98 @@
 					</section>
 				</div>
 				<section class="popular_directions">
-					<table class="popular_directions_table">
-						<tr>
-							<td>Варшава — Милан</td>
-							<td>от 771 ₽</td>
-							<td>Варшава — Амстердам</td>
-							<td>от 3 256 ₽</td>
-						</tr>
-						<tr>
-							<td>Варшава — Лондон</td>
-							<td>от 1 001 ₽</td>
-							<td>Варшава — Лиссабон</td>
-							<td>от 3 364 ₽</td>
-						</tr>
-						<tr>
-							<td>Варшава — Аликанте</td>
-							<td>от 1 424 ₽</td>
-							<td>Варшава — Париж</td>
-							<td>от 4 077 ₽</td>
-						</tr>
-						<tr>
-							<td>Варшава — Мадрид</td>
-							<td>от 1 646 ₽</td>
-							<td>Варшава — Нью-Йорк</td>
-							<td>от 21 277 ₽</td>
-						</tr>
-						<tr>
-							<td>Варшава — Барселона</td>
-							<td>от 1 663 ₽</td>
-							<td>Варшава — Денпасар-Бали</td>
-							<td>от 25 573 ₽</td>
-						</tr>
-					</table>
+					<ul class="popular_directions_list">
+						<li class="popular_directions_list_item">
+							<div>Варшава — Милан</div>
+							<div>от 771 ₽</div>
+						</li>
+						<li class="popular_directions_list_item">
+							<div>Варшава — Амстердам</div>
+							<div>от 3 256 ₽</div>
+						</li>
+						<li class="popular_directions_list_item">
+							<div>Варшава — Лондон</div>
+							<div>от 1 001 ₽</div>
+						</li>
+						<li class="popular_directions_list_item">
+							<div>Варшава — Лиссабон</div>
+							<div>от 3 364 ₽</div>
+						</li>
+						<li class="popular_directions_list_item">
+							<div>Варшава — Аликанте</div>
+							<div>от 1 424 ₽</div>
+						</li>
+						<li class="popular_directions_list_item">
+							<div>Варшава — Париж</div>
+							<div>от 4 077 ₽</div>
+						</li>
+						<li class="popular_directions_list_item">
+							<div>Варшава — Мадрид</div>
+							<div>от 1 646 ₽</div>
+						</li>
+						<li class="popular_directions_list_item">
+							<div>Варшава — Нью-Йорк</div>
+							<div>от 21 277 ₽</div>
+						</li>
+						<li class="popular_directions_list_item">
+							<div>Варшава — Барселона</div>
+							<div>от 1 663 ₽</div>
+						</li>
+						<li class="popular_directions_list_item">
+							<div>Варшава — Денпасар-Бали</div>
+							<div>от 25 573 ₽</div>
+						</li>
+					</ul>
 				</section>
 				<section class="top_airlines">
 					<div class="top_airlines_header">
-						<h2>ТОП-10 авиакомпаний</h2>
+						<h2>топ-10 авиакомпаний</h2>
 						<a href="#" class="more">Подробнее</a>
 					</div>
-					<table class="top_airlines_table">
-						<tr>
-							<td>1. Эмирейтс</td>
-							<td><img src="/images/star.svg" alt="*" /> 4.7</td>
-						</tr>
-						<tr>
-							<td>2. Катар Эйрвейз</td>
-							<td><img src="/images/star.svg" alt="*" /> 4.7</td>
-						</tr>
-						<tr>
-							<td>3. Тюркиш Эрлайнз</td>
-							<td><img src="/images/star.svg" alt="*" /> 4.7</td>
-						</tr>
-						<tr>
-							<td>4. Сингапур Эйрлаинз</td>
-							<td><img src="/images/star.svg" alt="*" /> 4.7</td>
-						</tr>
-						<tr>
-							<td>5. Кореан Эйр</td>
-							<td><img src="/images/star.svg" alt="*" /> 4.7</td>
-						</tr>
-						<tr>
-							<td>6. Этихад Эйрвэйз</td>
-							<td><img src="/images/star.svg" alt="*" /> 4.6</td>
-						</tr>
-						<tr>
-							<td>7. Катай Пасифик/td></td>
-							<td><img src="/images/star.svg" alt="*" /> 4.5</td>
-						</tr>
-						<tr>
-							<td>8. Эйр Астана</td>
-							<td><img src="/images/star.svg" alt="*" /> 4.5</td>
-						</tr>
-						<tr>
-							<td>9. Верджин Атлантик Эйрвэйз</td>
-							<td><img src="/images/star.svg" alt="*" /> 4.5</td>
-						</tr>
-						<tr>
-							<td>10. Эйр Нью Зиланд</td>
-							<td><img src="/images/star.svg" alt="*" /> 4.5</td>
-						</tr>
-					</table>
+					<ul class="top_airlines_list">
+						<li class="top_airlines_list_item">
+							<div class="name_of_airline">1. Эмирейтс</div>
+							<div class="rating_of_airline">4.7</div>
+						</li>
+						<li class="top_airlines_list_item">
+							<div class="name_of_airline">2. Катар Эйрвейз</div>
+							<div class="rating_of_airline">4.7</div>
+						</li>
+						<li class="top_airlines_list_item">
+							<div class="name_of_airline">3. Тюркиш Эрлайнз</div>
+							<div class="rating_of_airline">4.7</div>
+						</li>
+						<li class="top_airlines_list_item">
+							<div class="name_of_airline">4. Сингапур Эйрлаинз</div>
+							<div class="rating_of_airline">4.7</div>
+						</li>
+						<li class="top_airlines_list_item">
+							<div class="name_of_airline">5. Кореан Эйр</div>
+							<div class="rating_of_airline">4.7</div>
+						</li>
+						<li class="top_airlines_list_item">
+							<div class="name_of_airline">6. Этихад Эйрвэйз</div>
+							<div class="rating_of_airline">4.6</div>
+						</li>
+						<li class="top_airlines_list_item">
+							<div class="name_of_airline">7. Катай Пасифик/td></div>
+							<div class="rating_of_airline">4.5</div>
+						</li>
+						<li class="top_airlines_list_item">
+							<div class="name_of_airline">8. Эйр Астана</div>
+							<div class="rating_of_airline">4.5</div>
+						</li>
+						<li class="top_airlines_list_item">
+							<div class="name_of_airline">9. Верджин Атлантик Эйрвэйз</div>
+							<div class="rating_of_airline">4.5</div>
+						</li>
+						<li class="top_airlines_list_item">
+							<div class="name_of_airline">10. Эйр Нью Зиланд</div>
+							<div class="rating_of_airline">4.5</div>
+						</li>
+					</ul>
 				</section>
-				<section class="last_minute_aviaraces">
+				<section class="last_minute_tours">
 					<h2>Горящие распродажи</h2>
 					<div class="last_minute_container">
 						<h3>Как найти авиабилеты со скидкой онлайн</h3>
@@ -227,26 +262,14 @@
 				</section>
 				<section class="frequently_asked">
 					<h2>Частые вопросы</h2>
-					<table>
-						<tr>
-							<td><a href="#">Как забронировать авиабилет</a></td>
-						</tr>
-						<tr>
-							<td><a href="#">Как оплатить авиабилет</a></td>
-						</tr>
-						<tr>
-							<td><a href="#">Как зарегистрироваться на рейс</a></td>
-						</tr>
-						<tr>
-							<td><a href="#">Как вернуть авиабилет</a></td>
-						</tr>
-						<tr>
-							<td><a href="#">Бонусная программа</a></td>
-						</tr>
-						<tr>
-							<td><a href="#">Все темы</a></td>
-						</tr>
-					</table>
+					<ul>
+						<li><a href="#"></a>Как забронировать авиабилет</li>
+						<li><a href="#"></a>Как оплатить авиабилет</li>
+						<li><a href="#"></a>Как зарегистрироваться на рейс</li>
+						<li><a href="#"></a>Как вернуть авиабилет</li>
+						<li><a href="#"></a>Бонусная программа</li>
+						<li><a href="#"></a>Все темы</li>
+					</ul>
 				</section>
 
 				<section class="subscribe_to_the_newsletter">
@@ -256,7 +279,7 @@
 					</div>
 					<div class="subscribe_email">
 						<input type="email" placeholder="Email *" />
-						<button>></button>
+						<button>Подписаться</button>
 					</div>
 				</section>
 			</div>
@@ -273,48 +296,48 @@
 					<div class="countries_list_container">
 						<h3>Страны</h3>
 						<ul class="countries_list">
-							<li>Испания</li>
-							<li>Турция</li>
-							<li>Египет</li>
-							<li>Грузия</li>
-							<li>Польша</li>
-							<li>Франция</li>
+							<li><a href="#">Испания</a></li>
+							<li><a href="#">Турция</a></li>
+							<li><a href="#">Египет</a></li>
+							<li><a href="#">Грузия</a></li>
+							<li><a href="#">Польша</a></li>
+							<li><a href="#">Франция</a></li>
 						</ul>
 						<a href="#" class="all_countries_link">Все страны →</a>
 					</div>
 					<div class="towns_list_container">
 						<h3>Города</h3>
 						<ul class="towns_list">
-							<li>Кишинев</li>
-							<li>Дубаи</li>
-							<li>Варшава</li>
-							<li>Прага</li>
-							<li>Париж</li>
-							<li>Франкфурт</li>
+							<li><a href="#">Кишинев</a></li>
+							<li><a href="#">Дубаи</a></li>
+							<li><a href="#">Варшава</a></li>
+							<li><a href="#">Прага</a></li>
+							<li><a href="#">Париж</a></li>
+							<li><a href="#">Франкфурт</a></li>
 						</ul>
 						<a href="#" class="all_towns_link">Все города →</a>
 					</div>
 					<div class="towns_directions_container">
 						<h3>Направления</h3>
 						<ul class="directions_list">
-							<li>Кишинев - Стамбул</li>
-							<li>Кишинев - Анталия</li>
-							<li>Варшава - Торонто</li>
-							<li>Варшава - Париж</li>
-							<li>Кишинев - Тбилиси</li>
-							<li>Варшава - Стамбул</li>
+							<li><a href="#">Кишинев - Стамбул</a></li>
+							<li><a href="#">Кишинев - Анталия</a></li>
+							<li><a href="#">Варшава - Торонто</a></li>
+							<li><a href="#">Варшава - Париж</a></li>
+							<li><a href="#">Кишинев - Тбилиси</a></li>
+							<li><a href="#">Варшава - Стамбул</a></li>
 						</ul>
 						<a href="#" class="all_directions_link">Все направления →</a>
 					</div>
 					<div class="airports_list_container">
 						<h3>Аэропорты</h3>
 						<ul class="airports_list">
-							<li>Ф.Шопен (Варшава)</li>
-							<li>Франкфурт Интернешн...</li>
-							<li>Аэропорт Кишинев (Ки...</li>
-							<li>Фиумичино (Рим)</li>
-							<li>Аэропорт Стамбула(Ста...</li>
-							<li>Шарль Де Голль (Париж)</li>
+							<li><a href="#">Ф.Шопен (Варшава)</a></li>
+							<li><a href="#">Франкфурт Интернешн (Анталия)</a></li>
+							<li><a href="#">Аэропорт Кишинев (Кишинев)</a></li>
+							<li><a href="#">Фиумичино (Рим)</a></li>
+							<li><a href="#">Аэропорт Стамбула(Стамбул)</a></li>
+							<li><a href="#">Шарль Де Голль (Париж)</a></li>
 						</ul>
 						<a href="#" class="all_airports_link">Все аэропорты →</a>
 					</div>
@@ -343,26 +366,29 @@
 				</div>
 				<div class="contacts">
 					<div class="partner_download">
-						<button class="partners_button">Партнерская программа</button>
-						<img src="/images/google-play-store.svg" alt="*" />
-						<img src="/images/apple-app-store.svg" alt="*" />
+						<a href="#" class="partners_link">Партнерская программа</a>
+						<a href="#"><img src="/images/google-play-store.svg" alt="*" /></a>
+						<a href="#"><img src="/images/apple-app-store.svg" alt="*" /></a>
 					</div>
 					<div class="social_media">
-						<img
-							style="height: 30px; width: 30px"
-							src="/images/fb.svg"
-							alt="*"
-						/>
-						<img
-							style="height: 30px; width: 30px"
-							src="/images/instagram.svg"
-							alt="*"
-						/>
-						<img
-							style="height: 30px; width: 30px"
-							src="/images/telegram.svg"
-							alt="*"
-						/>
+						<a href="#"
+							><img
+								style="height: 30px; width: 30px"
+								src="/images/fb.svg"
+								alt="*"
+						/></a>
+						<a href="#"
+							><img
+								style="height: 30px; width: 30px"
+								src="/images/instagram.svg"
+								alt="*"
+						/></a>
+						<a href="#"
+							><img
+								style="height: 30px; width: 30px"
+								src="/images/telegram.svg"
+								alt="*"
+						/></a>
 					</div>
 				</div>
 			</div>
