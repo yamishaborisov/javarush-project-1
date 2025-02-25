@@ -46,10 +46,6 @@
 					</li>
 				</ul>
 				<div class="search_of_tickets">
-					<!-- <div class="input-container">
-						<input type="text" id="inputField" required>
-						<label for="inputField">Ваш лейбл</label>
-					</div> -->
 					<div class="input_group">
 						<div class="input_container">
 							<input type="text" id="inputField_from" required />
@@ -70,11 +66,74 @@
 						<!-- <select>
 							<option>1 пассажир, любой</option>
 						</select> -->
-						<div class="info_about_passenger">
+						<div class="info_about_passenger" id="passengerDiv">
 							<div>Пассажиры, класс</div>
 							<!-- наверное имеет смысл сделать так вместо label, потом на info_about_passenger навесить событие onclick и по нему открывать форму выбора пассажиров-->
 							<span class="quantity_of_passengers">1 пассажир</span>,
 							<span class="class_of_passenger">любой</span>
+						</div>
+
+						<div id="passengerForm" class="passenger-form">
+							<h3>Максимум 9 пассажиров</h3>
+							<div>
+								<label>Взрослые<br />(старше 12 лет):</label>
+								<div class="select_count_passengers">
+									<img id="minus_button" src="/images/minus-thin.svg" alt="#" />
+									<input type="number" id="adults" min="1" max="9" value="1" />
+									<img id="plus_button" src="/images/plus-thin.svg" alt="#" />
+								</div>
+							</div>
+							<div>
+								<label>Дети<br />(2-12 лет):</label>
+								<div class="select_count_passengers">
+									<img id="minus_button" src="/images/minus-thin.svg" alt="#" />
+									<input
+										type="number"
+										id="children"
+										min="1"
+										max="9"
+										value="1"
+									/>
+									<img id="plus_button" src="/images/plus-thin.svg" alt="#" />
+								</div>
+							</div>
+							<div>
+								<label for="babies">Младенцы<br />до 2 лет</label>
+								<div class="select_count_passengers">
+									<img id="minus_button" src="/images/minus-thin.svg" alt="#" />
+									<input type="number" id="babies" min="1" max="9" value="1" />
+									<img id="plus_button" src="/images/plus-thin.svg" alt="#" />
+								</div>
+							</div>
+							<div>
+								<div class="class-selector">
+									<input
+										type="radio"
+										id="any"
+										name="class"
+										value="any"
+										checked
+									/>
+									<label for="any">Любой</label>
+
+									<input
+										type="radio"
+										id="business"
+										name="class"
+										value="business"
+									/>
+									<label for="business">Бизнес</label>
+
+									<input
+										type="radio"
+										id="economy"
+										name="class"
+										value="economy"
+									/>
+									<label for="economy">Эконом</label>
+								</div>
+							</div>
+							<button id="confirmButton">Подтвердить</button>
 						</div>
 					</div>
 					<button class="search_button">Найти</button>
