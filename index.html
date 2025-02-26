@@ -23,7 +23,7 @@
 						<a href="#" class="language_image"
 							><img src="/images/lang.svg" alt="#"
 						/></a>
-						<a href="#" class="header_link"> Русский /></a>
+						<a href="#" class="header_link">Русский</a>
 					</div>
 				</nav>
 				<h1>Лучшие авиабилеты по самым низким ценам</h1>
@@ -83,27 +83,34 @@
 						<!-- <select>
 							<option>1 пассажир, любой</option>
 						</select> -->
-						<div class="info_about_passenger" id="passengerDiv">
-							<div>Пассажиры, класс</div>
-							<!-- наверное имеет смысл сделать так вместо label, потом на info_about_passenger навесить событие onclick и по нему открывать форму выбора пассажиров-->
-							<span class="quantity_of_passengers">1 пассажир</span>,
-							<span class="class_of_passenger">любой</span>
-						</div>
+						<button class="info_about_passenger" id="passengerDiv">
+							<span>Пассажиры, класс</span><br /><span>1 пассажир, любой</span>
+							<!-- <div>Пассажиры, класс</div>
+							наверное имеет смысл сделать так вместо label, потом на info_about_passenger навесить событие onclick и по нему открывать форму выбора пассажиров-->
+							<!-- <span class="quantity_of_passengers">1 пассажир</span>,
+							<span class="class_of_passenger">любой</span> -->
+						</button>
 
 						<div id="passengerForm" class="passenger-form">
-							<h3>Максимум 9 пассажиров</h3>
+							<h2>Максимум 9 пассажиров</h2>
 							<div>
 								<label>Взрослые<br />(старше 12 лет):</label>
 								<div class="select_count_passengers">
-									<img id="minus_button" src="/images/minus-thin.svg" alt="#" />
+									<button id="minus_button">
+										<img src="/images/minus-thin.svg" alt="#" />
+									</button>
 									<input type="number" id="adults" min="1" max="9" value="1" />
-									<img id="plus_button" src="/images/plus-thin.svg" alt="#" />
+									<button id="plus_button">
+										<img src="/images/plus-thin.svg" alt="#" />
+									</button>
 								</div>
 							</div>
 							<div>
 								<label>Дети<br />(2-12 лет):</label>
 								<div class="select_count_passengers">
-									<img id="minus_button" src="/images/minus-thin.svg" alt="#" />
+									<button id="minus_button">
+										<img src="/images/minus-thin.svg" alt="#" />
+									</button>
 									<input
 										type="number"
 										id="children"
@@ -111,15 +118,21 @@
 										max="9"
 										value="1"
 									/>
-									<img id="plus_button" src="/images/plus-thin.svg" alt="#" />
+									<button id="plus_button">
+										<img src="/images/plus-thin.svg" alt="#" />
+									</button>
 								</div>
 							</div>
 							<div>
 								<label for="babies">Младенцы<br />до 2 лет</label>
 								<div class="select_count_passengers">
-									<img id="minus_button" src="/images/minus-thin.svg" alt="#" />
+									<button id="minus_button">
+										<img src="/images/minus-thin.svg" alt="#" />
+									</button>
 									<input type="number" id="babies" min="1" max="9" value="1" />
-									<img id="plus_button" src="/images/plus-thin.svg" alt="#" />
+									<button id="plus_button">
+										<img src="/images/plus-thin.svg" alt="#" />
+									</button>
 								</div>
 							</div>
 							<div>
