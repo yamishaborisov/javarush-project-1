@@ -14,6 +14,11 @@
 		<header class="header">
 			<div class="container">
 				<nav class="header_links">
+					<div class="hamburger" id="hamburger">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
 					<div class="header_menu_links">
 						<a href="#" class="header_link">Корпоративным клиентам</a>
 						<a href="#" class="header_link bilets"> Авиабилеты </a>
@@ -37,7 +42,7 @@
 						<a href="#" class="header_link">Автобусы</a>
 					</li>
 					<li class="type_of_ticket">
-						<a href="#" class="header_link">Отели</a>
+						<a href="#" class="header_link">Отели <span>-60%</span></a>
 					</li>
 					<li class="type_of_ticket">
 						<a href="#" class="header_link">Страхование</a>
@@ -46,9 +51,11 @@
 				<div class="search_of_tickets">
 					<div class="input_group">
 						<div class="input_container">
-							<input type="text" id="inputField_from" placeholder=" " />
-							<label for="inputField_from">Откуда</label>
-							<div class="airport-list" id="airportList">
+							<label>
+								<span id="mySpan">Откуда</span>
+								<input type="text" id="inputField_from" placeholder=" " />
+							</label>
+							<!-- <div class="airport-list" id="airportList">
 								<ul class="airport-list" id="airportList">
 									<li>Выбранный город</li>
 									<li>Варшава</li>
@@ -56,28 +63,45 @@
 									<li>Кишинев <span>RMO</span></li>
 									<li>Балице <span>KRK</span></li>
 								</ul>
-							</div>
+							</div> -->
 						</div>
 						<div class="input_container">
-							<input type="text" id="inputField_to" placeholder=" " />
-							<label for="inputField_to">Куда</label>
-							<div class="airport-list" id="airportList">
+							<label>
+								<span>Куда</span>
+								<input type="text" id="inputField_to" placeholder=" " />
+							</label>
+							<!-- <div class="airport-list" id="airportList">
 								<ul class="airport-list" id="airportList">
 									<li>Ближайшие аэропорты</li>
 									<li>Париж <span>PAR</span></li>
 									<li>Нью-Йорк <span>NYC</span></li>
 									<li>Лондон <span>LON</span></li>
 								</ul>
+							</div> -->
+						</div>
+						<div class="there_and_back input_container">
+							<div class="input_container">
+								<label>
+									<span>Туда</span>
+									<input
+										type="text"
+										id="inputField_first_date"
+										placeholder=" "
+									/>
+								</label>
+							</div>
+							<div class="input_container">
+								<label>
+									<span>Обратно</span>
+									<input
+										type="text"
+										id="inputField_last_date"
+										placeholder=" "
+									/>
+								</label>
 							</div>
 						</div>
-						<div class="input_container">
-							<input type="text" id="inputField_first_date" placeholder=" " />
-							<label for="inputField_first_date">Туда</label>
-						</div>
-						<div class="input_container">
-							<input type="text" id="inputField_last_date" placeholder=" " />
-							<label for="inputField_last_date">Обратно</label>
-						</div>
+
 						<button class="info_about_passenger" id="passengerDiv">
 							<span>Пассажиры, класс</span><br /><span>1 пассажир, любой</span>
 						</button>
@@ -203,6 +227,49 @@
 								<li class="popular_directions_list_item">
 									<span class="destination">Варшава → Милан</span>
 									<span class="price">от 771 ₽</span>
+								</li>
+								<li class="popular_directions_list_item">
+									<span class="destination">Варшава → Амстердам</span>
+									<span class="price">от 3 256 ₽</span>
+								</li>
+								<li class="popular_directions_list_item">
+									<span class="destination">Варшава → Лондон</span>
+									<span class="price">от 1 001 ₽</span>
+								</li>
+								<li class="popular_directions_list_item">
+									<span class="destination">Варшава → Лиссабон</span>
+									<span class="price">от 3 364 ₽</span>
+								</li>
+								<li class="popular_directions_list_item">
+									<span class="destination">Варшава → Аликанте</span>
+									<span class="price">от 1 424 ₽</span>
+								</li>
+								<li class="popular_directions_list_item">
+									<span class="destination">Варшава → Париж</span>
+									<span class="price">от 4 077 ₽</span>
+								</li>
+								<li class="popular_directions_list_item">
+									<span class="destination">Варшава → Мадрид</span>
+									<span class="price">от 1 646 ₽</span>
+								</li>
+								<li class="popular_directions_list_item">
+									<span class="destination">Варшава → Нью-Йорк</span>
+									<span class="price">от 21 277 ₽</span>
+								</li>
+								<li class="popular_directions_list_item">
+									<span class="destination">Варшава → Барселона</span>
+									<span class="price">от 1 663 ₽</span>
+								</li>
+								<li class="popular_directions_list_item">
+									<span class="destination">Варшава → Денгасар-Бали</span>
+									<span class="price">от 25 573 ₽</span>
+								</li>
+							</ul>
+
+							<!-- <ul class="popular_directions_list"> -->
+							<!-- <li class="popular_directions_list_item">
+									<span class="destination">Варшава → Милан</span>
+									<span class="price">от 771 ₽</span>
 									<span class="destination">Варшава → Амстердам</span>
 									<span class="price">от 3 256 ₽</span>
 								</li>
@@ -211,14 +278,14 @@
 									<span class="price">от 1 001 ₽</span>
 									<span class="destination">Варшава → Лиссабон</span>
 									<span class="price">от 3 364 ₽</span>
-								</li>
-								<li class="popular_directions_list_item">
+								</li> -->
+							<!-- <li class="popular_directions_list_item">
 									<span class="destination">Варшава → Аликанте</span>
 									<span class="price">от 1 424 ₽</span>
 									<span class="destination">Варшава → Париж</span>
 									<span class="price">от 4 077 ₽</span>
-								</li>
-								<li class="popular_directions_list_item">
+								</li> -->
+							<!-- <li class="popular_directions_list_item">
 									<span class="destination">Варшава → Мадрид</span>
 									<span class="price">от 1 646 ₽</span>
 									<span class="destination">Варшава → Нью-Йорк</span>
@@ -230,66 +297,94 @@
 									<span class="destination">Варшава → Денгасар-Бали</span>
 									<span class="price">от 25 573 ₽</span>
 								</li>
-							</ul>
+							</ul> -->
 						</div>
 					</section>
 					<section class="top_airlines">
 						<div class="top_airlines_header">
-							<h2>топ-10 авиакомпаний</h2>
+							<h2><span class="uppercase">топ</span>-10 авиакомпаний</h2>
 							<a href="#" class="more">Подробнее</a>
 						</div>
 						<ul class="top_airlines_list">
 							<li class="top_airlines_list_item">
-								<div class="name_of_airline"><a href="#">1. Эмирейтс</a></div>
-								<div class="rating_of_airline">4.7</div>
-							</li>
-							<li class="top_airlines_list_item">
 								<div class="name_of_airline">
-									<a href="#">2. Катар Эйрвейз</a>
+									<a href="#"
+										><span class="number_of_airline">1</span> Эмирейтс</a
+									>
 								</div>
 								<div class="rating_of_airline">4.7</div>
 							</li>
 							<li class="top_airlines_list_item">
 								<div class="name_of_airline">
-									<a href="#">3. Тюркиш Эрлайнз</a>
+									<a href="#"
+										><span class="number_of_airline">2</span> Катар Эйрвейз</a
+									>
 								</div>
 								<div class="rating_of_airline">4.7</div>
 							</li>
 							<li class="top_airlines_list_item">
 								<div class="name_of_airline">
-									<a href="#">4. Сингапур Эйрлаинз</a>
+									<a href="#"
+										><span class="number_of_airline">3</span> Тюркиш Эрлайнз</a
+									>
 								</div>
 								<div class="rating_of_airline">4.7</div>
 							</li>
 							<li class="top_airlines_list_item">
-								<div class="name_of_airline"><a href="#">5. Кореан Эйр</a></div>
+								<div class="name_of_airline">
+									<a href="#"
+										><span class="number_of_airline">4</span> Сингапур
+										Эйрлаинз</a
+									>
+								</div>
 								<div class="rating_of_airline">4.7</div>
 							</li>
 							<li class="top_airlines_list_item">
 								<div class="name_of_airline">
-									<a href="#">6. Этихад Эйрвэйз</a>
+									<a href="#"
+										><span class="number_of_airline">5</span> Кореан Эйр</a
+									>
+								</div>
+								<div class="rating_of_airline">4.7</div>
+							</li>
+							<li class="top_airlines_list_item">
+								<div class="name_of_airline">
+									<a href="#"
+										><span class="number_of_airline">6</span> Этихад Эйрвэйз</a
+									>
 								</div>
 								<div class="rating_of_airline">4.6</div>
 							</li>
 							<li class="top_airlines_list_item">
 								<div class="name_of_airline">
-									<a href="#">7. Катай Пасифик</a>
-								</div>
-								<div class="rating_of_airline">4.5</div>
-							</li>
-							<li class="top_airlines_list_item">
-								<div class="name_of_airline"><a href="#">8. Эйр Астана</a></div>
-								<div class="rating_of_airline">4.5</div>
-							</li>
-							<li class="top_airlines_list_item">
-								<div class="name_of_airline">
-									<a href="#">9. Верджин Атлантик Эйрвэйз</a>
+									<a href="#"
+										><span class="number_of_airline">7</span> Катай Пасифик</a
+									>
 								</div>
 								<div class="rating_of_airline">4.5</div>
 							</li>
 							<li class="top_airlines_list_item">
 								<div class="name_of_airline">
-									<a href="#">10. Эйр Нью Зиланд</a>
+									<a href="#"
+										><span class="number_of_airline">8</span> Эйр Астана</a
+									>
+								</div>
+								<div class="rating_of_airline">4.5</div>
+							</li>
+							<li class="top_airlines_list_item">
+								<div class="name_of_airline">
+									<a href="#"
+										><span class="number_of_airline">9</span> Верджин Атлантик
+										Эйрвэйз</a
+									>
+								</div>
+								<div class="rating_of_airline">4.5</div>
+							</li>
+							<li class="top_airlines_list_item">
+								<div class="name_of_airline">
+									<a href="#"
+										><span class="number_of_airline">10</span> Эйр Нью Зиланд</a
+									>
 								</div>
 								<div class="rating_of_airline">4.5</div>
 							</li>
@@ -453,19 +548,27 @@
 					</div>
 				</div>
 				<div class="footer_all_links">
-					<a href="#" class="all_countries_link">Все страны →</a>
-					<a href="#" class="all_towns_link">Все города →</a>
-					<a href="#" class="all_directions_link">Все направления →</a>
-					<a href="#" class="all_airports_link">Все аэропорты →</a>
-					<a href="#" class="all_airlines_link">Все авиакомпании →</a>
-					<a href="#" class="all_services_link">Карта сайта →</a>
+					<a href="#" class="all_countries_link">Все страны <span>→</span></a>
+					<a href="#" class="all_towns_link">Все города <span>→</span></a>
+					<a href="#" class="all_directions_link"
+						>Все направления <span>→</span></a
+					>
+					<a href="#" class="all_airports_link">Все аэропорты <span>→</span></a>
+					<a href="#" class="all_airlines_link"
+						>Все авиакомпании <span>→</span></a
+					>
+					<a href="#" class="all_services_link">Карта сайта <span>→</span></a>
 				</div>
 				<hr class="line" />
 				<div class="contacts">
 					<div class="partner_download">
 						<a href="#" class="partners_link">Партнерская программа</a>
-						<a href="#"><img src="/images/google-play-store.svg" alt="*" /></a>
-						<a href="#"><img src="/images/apple-app-store.svg" alt="*" /></a>
+						<div class="download">
+							<a href="#"
+								><img src="/images/google-play-store.svg" alt="*"
+							/></a>
+							<a href="#"><img src="/images/apple-app-store.svg" alt="*" /></a>
+						</div>
 					</div>
 					<div class="social_media">
 						<a href="#"
