@@ -84,11 +84,11 @@ header nav {
 .bilets::after,
 .reference::after,
 .languege::after {
-	content: url('images/bullet.svg');
+	content: url('../images/bullet.svg');
 	margin: 5px;
 }
 .language_image {
-	content: url('images/lang.svg');
+	content: url('../images/lang.svg');
 	margin-right: 5px;
 }
 
@@ -276,7 +276,7 @@ button span {
 	border: 1px solid #ccc;
 	border-radius: 15px;
 	padding: 20px 10px;
-	background-image: url('images/telegram-ru.png');
+	background-image: url('../images/telegram-ru.png');
 	background-repeat: no-repeat;
 	background-size: 140px;
 	background-position: 95% 55%;
@@ -287,7 +287,7 @@ button span {
 	border: 1px solid #ccc;
 	border-radius: 15px;
 	padding: 20px 10px;
-	background-image: url('images/bus-light.png');
+	background-image: url('../images/bus-light.png');
 	background-repeat: no-repeat;
 	background-size: 140px;
 	background-position: 100% 55%;
@@ -318,7 +318,7 @@ button span {
 	display: inline-block;
 	width: 10px;
 	height: 10px;
-	background-image: url('images/check-smooth.svg');
+	background-image: url('../images/check-smooth.svg');
 	background-size: contain;
 	background-repeat: no-repeat;
 	margin-right: 8px; /* Отступ между иконкой и текстом */
@@ -422,7 +422,7 @@ button span {
 }
 
 .rating_of_airline::before {
-	content: url('images/star.svg');
+	content: url('../images/star.svg');
 	margin-right: 10px;
 }
 .top_airlines a {
@@ -487,7 +487,7 @@ button span {
 	border: 1px solid #ccc;
 	border-radius: 15px;
 	padding: 20px;
-	background: url('images/subscribe-laptop.svg'), #d0d1fb;
+	background: url('../images/subscribe-laptop.svg'), #d0d1fb;
 	background-size: 85px;
 	background-repeat: no-repeat;
 	background-position: 89% 17%;
@@ -738,7 +738,7 @@ button span {
 
 	.footer_all_links a span {
 		/* display: none; */
-		content: url('images/chevron-smooth-right.svg');
+		content: url('../images/chevron-smooth-right.svg');
 	}
 	.line {
 		display: none;
