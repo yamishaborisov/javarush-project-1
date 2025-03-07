@@ -8,13 +8,18 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
 		/>
-		<link rel="stylesheet" href="/css/styles.css" />
+		<link rel="stylesheet" href="css/styles.css" />
 	</head>
 	<body>
 		<header class="header">
 			<div class="container">
 				<nav class="header_links">
-					<div class="header_menu_links">
+					<div class="hamburger" id="hamburger">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div class="header_menu_links" id="header_menu_links">
 						<a href="#" class="header_link">Корпоративным клиентам</a>
 						<a href="#" class="header_link bilets"> Авиабилеты </a>
 						<a href="#" class="header_link reference">Справка </a>
@@ -37,92 +42,136 @@
 						<a href="#" class="header_link">Автобусы</a>
 					</li>
 					<li class="type_of_ticket">
-						<a href="#" class="header_link">Отели</a>
+						<a href="#" class="header_link">Отели <span>-60%</span></a>
 					</li>
 					<li class="type_of_ticket">
 						<a href="#" class="header_link">Страхование</a>
 					</li>
 				</ul>
+
 				<div class="search_of_tickets">
 					<div class="input_group">
 						<div class="input_container">
-							<input type="text" id="inputField_from" placeholder=" " />
-							<label for="inputField_from">Откуда</label>
-							<div class="airport-list" id="airportList">
-								<ul class="airport-list" id="airportList">
-									<li>Выбранный город</li>
-									<li>Варшава</li>
-									<li>Ближайшие аэропорты</li>
-									<li>Кишинев <span>RMO</span></li>
-									<li>Балице <span>KRK</span></li>
-								</ul>
+							<label>
+								<span id="SpanFrom">Откуда</span>
+								<input type="text" id="inputField_from" placeholder=" " />
+								<div id="autocompleteListFrom" class="autocomplete-list"></div>
+							</label>
+						</div>
+						<div class="input_container">
+							<label>
+								<span id="SpanTo">Куда</span>
+								<input type="text" id="inputField_to" placeholder=" " />
+								<div id="autocompleteListTo" class="autocomplete-list"></div>
+							</label>
+						</div>
+						<div class="there_and_back input_container">
+							<div class="input_container">
+								<label>
+									<span id="SpanToDate">Туда</span>
+									<input
+										type="text"
+										id="inputField_first_date"
+										placeholder=" "
+									/>
+								</label>
+							</div>
+							<div class="input_container">
+								<label>
+									<span id="SpanFromDate">Обратно</span>
+									<input
+										type="text"
+										id="inputField_last_date"
+										placeholder=" "
+									/>
+								</label>
 							</div>
 						</div>
-						<div class="input_container">
-							<input type="text" id="inputField_to" placeholder=" " />
-							<label for="inputField_to">Куда</label>
-							<div class="airport-list" id="airportList">
-								<ul class="airport-list" id="airportList">
-									<li>Ближайшие аэропорты</li>
-									<li>Париж <span>PAR</span></li>
-									<li>Нью-Йорк <span>NYC</span></li>
-									<li>Лондон <span>LON</span></li>
-								</ul>
-							</div>
-						</div>
-						<div class="input_container">
-							<input type="text" id="inputField_first_date" placeholder=" " />
-							<label for="inputField_first_date">Туда</label>
-						</div>
-						<div class="input_container">
-							<input type="text" id="inputField_last_date" placeholder=" " />
-							<label for="inputField_last_date">Обратно</label>
-						</div>
+
 						<button class="info_about_passenger" id="passengerDiv">
-							<span>Пассажиры, класс</span><br /><span>1 пассажир, любой</span>
+							<span>Пассажиров: <span id="count_of_pas"></span></span
+							><br /><span>Класс: <span id="class_of_pas"></span></span>
 						</button>
 
 						<div id="passengerForm" class="passenger-form">
-							<h2>Максимум 9 пассажиров</h2>
+							<p>Максимум 9 пассажиров</p>
+							<p id="error-message" style="color: red; display: none">
+								Сумма значений не должна превышать 9!
+							</p>
 							<div>
-								<label>Взрослые<br />(старше 12 лет):</label>
+								<label
+									><span class="class_of_age">Взрослые</span><br />
+									<span>(старше 12 лет):</span></label
+								>
 								<div class="select_count_passengers">
-									<button id="minus_button">
-										<img src="/images/minus-thin.svg" alt="#" />
-									</button>
-									<input type="number" id="adults" min="1" max="9" value="1" />
-									<button id="plus_button">
-										<img src="/images/plus-thin.svg" alt="#" />
-									</button>
-								</div>
-							</div>
-							<div>
-								<label>Дети<br />(2-12 лет):</label>
-								<div class="select_count_passengers">
-									<button id="minus_button">
-										<img src="/images/minus-thin.svg" alt="#" />
+									<button
+										class="minus_button"
+										data-target="adults_input"
+										id="minus_button_adults"
+									>
+										<img src="images/minus-thin.svg" alt="#" />
 									</button>
 									<input
 										type="number"
-										id="children"
+										class="pas_form_input"
+										id="adults_input"
+										value="0"
 										min="1"
 										max="9"
 										value="1"
 									/>
-									<button id="plus_button">
-										<img src="/images/plus-thin.svg" alt="#" />
+									<button
+										class="plus_button"
+										data-target="adults_input"
+										id="plus_button_adults"
+									>
+										<img src="images/plus-thin.svg" alt="#" />
 									</button>
 								</div>
 							</div>
 							<div>
-								<label for="babies">Младенцы<br />до 2 лет</label>
+								<label
+									><span class="class_of_age">Дети</span><br />(2-12
+									лет):</label
+								>
 								<div class="select_count_passengers">
-									<button id="minus_button">
-										<img src="/images/minus-thin.svg" alt="#" />
+									<button class="minus_button" data-target="children">
+										<img src="images/minus-thin.svg" alt="#" />
 									</button>
-									<input type="number" id="babies" min="1" max="9" value="1" />
-									<button id="plus_button">
-										<img src="/images/plus-thin.svg" alt="#" />
+									<input
+										type="number"
+										class="child_input"
+										id="children"
+										value="0"
+										min="1"
+										max="9"
+										value="1"
+									/>
+									<button class="plus_button" data-target="children">
+										<img src="images/plus-thin.svg" alt="#" />
+									</button>
+								</div>
+							</div>
+							<div>
+								<label for="babies"
+									><span class="class_of_age">Младенцы</span><br />до 2
+									лет</label
+								>
+								<div class="select_count_passengers">
+									<button class="minus_button" data-target="babies">
+										<img src="images/minus-thin.svg" alt="#" />
+									</button>
+									<input
+										type="number"
+										class="pas_form_input"
+										id="babies"
+										value="0"
+										min="1"
+										max="9"
+										value="1"
+									/>
+									<button class="plus_button" data-target="babies">
+										<img src="images/plus-thin.svg" alt="#" />
 									</button>
 								</div>
 							</div>
@@ -132,35 +181,40 @@
 										type="radio"
 										id="any"
 										name="class"
-										value="any"
+										value="Любой"
 										checked
+										class="radio-hidden"
 									/>
-									<label for="any">Любой</label>
+									<label class="radio-label" id="any-class" for="any"
+										>Любой</label
+									>
 
 									<input
 										type="radio"
 										id="business"
 										name="class"
-										value="business"
+										value="Бизнес"
+										class="radio-hidden"
 									/>
-									<label for="business">Бизнес</label>
+									<label class="radio-label" for="business">Бизнес</label>
 
 									<input
 										type="radio"
 										id="economy"
 										name="class"
-										value="economy"
+										value="Эконом"
+										class="radio-hidden"
 									/>
-									<label for="economy">Эконом</label>
+									<label class="radio-label" for="economy">Эконом</label>
 								</div>
 							</div>
-							<button id="confirmButton">Подтвердить</button>
+							<button id="confirmButton">Ок</button>
 						</div>
 					</div>
-					<button class="search_button">Найти</button>
+					<button id="search_button" class="search_button">Найти</button>
 				</div>
 				<a href="#" class="difficult_route"
-					><img src="/images/multiroute.svg" alt="*" /> Сложный маршрут</a
+					><img src="images/multiroute.svg" alt="*" /> Сложный маршрут</a
 				>
 			</div>
 		</header>
@@ -190,9 +244,6 @@
 								<a>Найти билеты</a>
 							</div>
 						</div>
-						<!-- <div class="bus_tickets_image_cont">
-							<img src="/images/bus-light.png" alt="" />
-						</div> -->
 					</section>
 				</div>
 				<div class="popular_directions_top_airlines_conyainer">
@@ -201,95 +252,161 @@
 						<div class="popular_directions_container">
 							<ul class="popular_directions_list">
 								<li class="popular_directions_list_item">
-									<span class="destination">Варшава → Милан</span>
-									<span class="price">от 771 ₽</span>
-									<span class="destination">Варшава → Амстердам</span>
-									<span class="price">от 3 256 ₽</span>
+									<a href="#"
+										><span class="destination">Варшава → Милан</span>
+										<span class="price">от 771 ₽</span></a
+									>
 								</li>
 								<li class="popular_directions_list_item">
-									<span class="destination">Варшава → Лондон</span>
-									<span class="price">от 1 001 ₽</span>
-									<span class="destination">Варшава → Лиссабон</span>
-									<span class="price">от 3 364 ₽</span>
+									<a href="#"
+										><span class="destination">Варшава → Амстердам</span>
+										<span class="price">от 3 256 ₽</span></a
+									>
 								</li>
 								<li class="popular_directions_list_item">
-									<span class="destination">Варшава → Аликанте</span>
-									<span class="price">от 1 424 ₽</span>
-									<span class="destination">Варшава → Париж</span>
-									<span class="price">от 4 077 ₽</span>
+									<a href="#"
+										><span class="destination">Варшава → Лондон</span>
+										<span class="price">от 1 001 ₽</span></a
+									>
 								</li>
 								<li class="popular_directions_list_item">
-									<span class="destination">Варшава → Мадрид</span>
-									<span class="price">от 1 646 ₽</span>
-									<span class="destination">Варшава → Нью-Йорк</span>
-									<span class="price">от 21 277 ₽</span>
+									<a href="#"
+										><span class="destination">Варшава → Лиссабон</span>
+										<span class="price">от 3 364 ₽</span></a
+									>
 								</li>
 								<li class="popular_directions_list_item">
-									<span class="destination">Варшава → Барселона</span>
-									<span class="price">от 1 663 ₽</span>
-									<span class="destination">Варшава → Денгасар-Бали</span>
-									<span class="price">от 25 573 ₽</span>
+									<a href="#"
+										><span class="destination">Варшава → Аликанте</span>
+										<span class="price">от 1 424 ₽</span></a
+									>
+								</li>
+								<li class="popular_directions_list_item">
+									<a href="#"
+										><span class="destination">Варшава → Париж</span>
+										<span class="price">от 4 077 ₽</span></a
+									>
+								</li>
+								<li class="popular_directions_list_item">
+									<a href="#"
+										><span class="destination">Варшава → Мадрид</span>
+										<span class="price">от 1 646 ₽</span></a
+									>
+								</li>
+								<li class="popular_directions_list_item">
+									<a href="#"
+										><span class="destination">Варшава → Нью-Йорк</span>
+										<span class="price">от 21 277 ₽</span></a
+									>
+								</li>
+								<li class="popular_directions_list_item">
+									<a href="#"
+										><span class="destination">Варшава → Барселона</span>
+										<span class="price">от 1 663 ₽</span></a
+									>
+								</li>
+								<li class="popular_directions_list_item">
+									<a href="#"
+										><span class="destination">Варшава → Денгасар-Бали</span>
+										<span class="price">от 25 573 ₽</span></a
+									>
 								</li>
 							</ul>
 						</div>
 					</section>
 					<section class="top_airlines">
 						<div class="top_airlines_header">
-							<h2>топ-10 авиакомпаний</h2>
+							<h2><span class="uppercase">топ</span>-10 авиакомпаний</h2>
 							<a href="#" class="more">Подробнее</a>
 						</div>
 						<ul class="top_airlines_list">
 							<li class="top_airlines_list_item">
-								<div class="name_of_airline"><a href="#">1. Эмирейтс</a></div>
-								<div class="rating_of_airline">4.7</div>
-							</li>
-							<li class="top_airlines_list_item">
 								<div class="name_of_airline">
-									<a href="#">2. Катар Эйрвейз</a>
+									<a href="#"
+										><span class="number_of_airline">1 </span>
+										<span class="airline">Эмирейтс</span></a
+									>
 								</div>
 								<div class="rating_of_airline">4.7</div>
 							</li>
 							<li class="top_airlines_list_item">
 								<div class="name_of_airline">
-									<a href="#">3. Тюркиш Эрлайнз</a>
+									<a href="#"
+										><span class="number_of_airline">2 </span
+										><span class="airline">Катар Эйрвейз</span></a
+									>
 								</div>
 								<div class="rating_of_airline">4.7</div>
 							</li>
 							<li class="top_airlines_list_item">
 								<div class="name_of_airline">
-									<a href="#">4. Сингапур Эйрлаинз</a>
+									<a href="#"
+										><span class="number_of_airline">3 </span>
+										<span class="airline">Тюркиш Эрлайнз</span></a
+									>
 								</div>
 								<div class="rating_of_airline">4.7</div>
 							</li>
 							<li class="top_airlines_list_item">
-								<div class="name_of_airline"><a href="#">5. Кореан Эйр</a></div>
+								<div class="name_of_airline">
+									<a href="#"
+										><span class="number_of_airline">4 </span
+										><span class="airline">Сингапур Эйрлаинз</span></a
+									>
+								</div>
 								<div class="rating_of_airline">4.7</div>
 							</li>
 							<li class="top_airlines_list_item">
 								<div class="name_of_airline">
-									<a href="#">6. Этихад Эйрвэйз</a>
+									<a href="#"
+										><span class="number_of_airline">5 </span
+										><span class="airline">Кореан Эйр</span></a
+									>
+								</div>
+								<div class="rating_of_airline">4.7</div>
+							</li>
+							<li class="top_airlines_list_item">
+								<div class="name_of_airline">
+									<a href="#"
+										><span class="number_of_airline">6 </span
+										><span class="airline">Этихад Эйрвэйз</span></a
+									>
 								</div>
 								<div class="rating_of_airline">4.6</div>
 							</li>
 							<li class="top_airlines_list_item">
 								<div class="name_of_airline">
-									<a href="#">7. Катай Пасифик</a>
-								</div>
-								<div class="rating_of_airline">4.5</div>
-							</li>
-							<li class="top_airlines_list_item">
-								<div class="name_of_airline"><a href="#">8. Эйр Астана</a></div>
-								<div class="rating_of_airline">4.5</div>
-							</li>
-							<li class="top_airlines_list_item">
-								<div class="name_of_airline">
-									<a href="#">9. Верджин Атлантик Эйрвэйз</a>
+									<a href="#"
+										><span class="number_of_airline">7 </span
+										><span class="airline">Катай Пасифик</span></a
+									>
 								</div>
 								<div class="rating_of_airline">4.5</div>
 							</li>
 							<li class="top_airlines_list_item">
 								<div class="name_of_airline">
-									<a href="#">10. Эйр Нью Зиланд</a>
+									<a href="#"
+										><span class="number_of_airline">8 </span
+										><span class="airline">Эйр Астана</span></a
+									>
+								</div>
+								<div class="rating_of_airline">4.5</div>
+							</li>
+							<li class="top_airlines_list_item">
+								<div class="name_of_airline">
+									<a href="#"
+										><span class="number_of_airline">9 </span
+										><span class="airline">Верджин Атлантик Эйрвэйз</span></a
+									>
+								</div>
+								<div class="rating_of_airline">4.5</div>
+							</li>
+							<li class="top_airlines_list_item">
+								<div class="name_of_airline">
+									<a href="#"
+										><span class="number_of_airline">10 </span
+										><span class="airline">Эйр Нью Зиланд</span></a
+									>
 								</div>
 								<div class="rating_of_airline">4.5</div>
 							</li>
@@ -365,7 +482,6 @@
 						<section class="subscribe_to_the_newsletter">
 							<div class="text_image">
 								<p>Лучшие предложения<br />для путешествий</p>
-								<!-- <img src="/images/subscribe-laptop.svg" alt="" /> -->
 							</div>
 							<div class="subscribe_email">
 								<input type="email" placeholder="Email *" />
@@ -381,10 +497,10 @@
 		<footer>
 			<div class="container">
 				<div class="footer_images">
-					<img src="/images/iata.svg" alt="*" />
-					<img src="/images/pci.svg" alt="*" />
-					<img src="/images/visa.svg" alt="*" />
-					<img src="/images/mastercard.svg" alt="*" />
+					<img src="images/iata.svg" alt="*" />
+					<img src="images/pci.svg" alt="*" />
+					<img src="images/visa.svg" alt="*" />
+					<img src="images/mastercard.svg" alt="*" />
 				</div>
 				<div class="footer_information">
 					<div class="countries_list_container">
@@ -434,56 +550,61 @@
 					<div class="airlines_list_container">
 						<h3>Авиакомпании</h3>
 						<ul class="airlines_list">
-							<li>Тюркиш Эрлайнз</li>
-							<li>Wizz Air Украина</li>
-							<li>Qatar Airways</li>
-							<li>Ryanair</li>
-							<li>Air Baltic</li>
+							<li><a href="#">Тюркиш Эрлайнз</a></li>
+							<li><a href="#">Wizz Air Украина</a></li>
+							<li><a href="#">Qatar Airways</a></li>
+							<li><a href="#">Ryanair</a></li>
+							<li><a href="#">Air Baltic</a></li>
 						</ul>
 					</div>
 					<div class="services_list_container">
 						<h3>Наши сервисы</h3>
 						<ul class="services_list">
-							<li>Тюркиш Эрлайнз</li>
-							<li>Wizz Air Украина</li>
-							<li>Qatar Airways</li>
-							<li>Ryanair</li>
-							<li>Air Baltic</li>
+							<li><a href="#">Тюркиш Эрлайнз</a></li>
+							<li><a href="#">Wizz Air Украина</a></li>
+							<li><a href="#">Qatar Airways</a></li>
+							<li><a href="#">Ryanair</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="footer_all_links">
-					<a href="#" class="all_countries_link">Все страны →</a>
-					<a href="#" class="all_towns_link">Все города →</a>
-					<a href="#" class="all_directions_link">Все направления →</a>
-					<a href="#" class="all_airports_link">Все аэропорты →</a>
-					<a href="#" class="all_airlines_link">Все авиакомпании →</a>
-					<a href="#" class="all_services_link">Карта сайта →</a>
+					<a href="#" class="all_countries_link">Все страны <span>→</span></a>
+					<a href="#" class="all_towns_link">Все города <span>→</span></a>
+					<a href="#" class="all_directions_link"
+						>Все направления <span>→</span></a
+					>
+					<a href="#" class="all_airports_link">Все аэропорты <span>→</span></a>
+					<a href="#" class="all_airlines_link"
+						>Все авиакомпании <span>→</span></a
+					>
+					<a href="#" class="all_services_link">Карта сайта <span>→</span></a>
 				</div>
 				<hr class="line" />
 				<div class="contacts">
 					<div class="partner_download">
 						<a href="#" class="partners_link">Партнерская программа</a>
-						<a href="#"><img src="/images/google-play-store.svg" alt="*" /></a>
-						<a href="#"><img src="/images/apple-app-store.svg" alt="*" /></a>
+						<div class="download">
+							<a href="#"><img src="images/google-play-store.svg" alt="*" /></a>
+							<a href="#"><img src="images/apple-app-store.svg" alt="*" /></a>
+						</div>
 					</div>
 					<div class="social_media">
 						<a href="#"
 							><img
 								style="height: 40px; width: 40px"
-								src="/images/fb.svg"
+								src="images/fb.svg"
 								alt="*"
 						/></a>
 						<a href="#"
 							><img
 								style="height: 40px; width: 40px"
-								src="/images/instagram.svg"
+								src="images/instagram.svg"
 								alt="*"
 						/></a>
 						<a href="#"
 							><img
 								style="height: 40px; width: 40px"
-								src="/images/telegram.svg"
+								src="images/telegram.svg"
 								alt="*"
 						/></a>
 					</div>
@@ -491,6 +612,6 @@
 			</div>
 		</footer>
 
-		<script src="/js/index.js"></script>
+		<script src="js/index.js"></script>
 	</body>
 </html>
