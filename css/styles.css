@@ -56,11 +56,62 @@ header nav {
 	flex-direction: row;
 	gap: 40px;
 }
+.autocomplete-list {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	background: white;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	display: none;
+	overflow: hidden;
+	z-index: 1;
+}
+
+.autocomplete-section {
+	padding: 8px;
+	font-weight: bold;
+	background: #f5f5f5;
+}
+
+.autocomplete-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.autocomplete-item:hover {
+	background: #f0f0f0;
+}
+
+.city-icon {
+	margin-right: 8px;
+	color: gray;
+}
+
+.remove-icon {
+	cursor: pointer;
+	color: red;
+}
+
+.selected-city {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	background: #eef2ff;
+	border-bottom: 1px solid #ddd;
+}
 .hamburger {
 	display: none;
 	flex-direction: column;
 	cursor: pointer;
 	gap: 5px;
+	z-index: 2;
 }
 
 .hamburger span {
@@ -121,7 +172,10 @@ a {
 	padding: 0 20px;
 	width: 100%;
 }
-.input_container span {
+.input_container #SpanFrom,
+.input_container #SpanTo,
+.input_container #SpanFromDate,
+.input_container #SpanToDate {
 	background-color: #fff;
 	font-size: 16px;
 	line-height: 18px;
@@ -130,24 +184,8 @@ a {
 	transition: all 0.2s ease;
 	top: 35%;
 	margin-left: 10px;
-	/* transform: translate(0, -50%); */
+	color: lightgray;
 }
-
-.input_container input:focus + .input_container span,
-.input_container input:not(:placeholder-shown) + .input_container span {
-	top: 0;
-	font-size: 12px;
-	color: #007bff;
-}
-
-/* .input_container input:focus + label,
-.input_container input:not(placeholder-shown) + label {
-	top: 0;
-	left: 10px;
-	font-size: 11px;
-	transform: translate(0, 0);
-	padding: 2px 6px;
-} */
 
 .types_of_tickets_list {
 	list-style-type: none;
@@ -184,11 +222,8 @@ a {
 .input_group {
 	display: flex;
 	border-radius: 5px;
-	overflow: hidden;
 }
-.input_container span {
-	color: lightgray;
-}
+
 .search_of_tickets {
 	display: flex;
 	flex-direction: row;
@@ -238,11 +273,52 @@ button span {
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-	z-index: 1000;
+	/* z-index: 1000; */
+}
+.passenger-form p {
+	color: darkgray;
+}
+.class_of_age {
+	font-weight: bolder;
+}
+.class-selector {
+	display: flex;
+}
+.plus_button,
+.minus_button {
+	border-radius: 22px;
+	background: transparent;
+}
+#confirmButton {
+	width: 100%;
+	background: #ff4d4d;
+	color: #fff;
+}
+.radio-hidden {
+	display: none;
 }
 
+.radio-label {
+	display: inline-block;
+	padding: 10px 20px;
+	border-radius: 33px;
+	background-color: #f0f0f0;
+	cursor: pointer;
+	transition: background 0.3s ease, color 0.3s ease;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.radio-hidden:checked + .radio-label {
+	background-color: #ff4d4d;
+	color: white;
+	box-shadow: 0 0 10px rgba(175, 76, 101, 0.8);
+}
 .passenger-form div {
 	margin-bottom: 15px;
+	margin-bottom: 15px;
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
 }
 
 .passenger-form label {
@@ -321,7 +397,7 @@ button span {
 	background-image: url('../images/check-smooth.svg');
 	background-size: contain;
 	background-repeat: no-repeat;
-	margin-right: 8px; /* Отступ между иконкой и текстом */
+	margin-right: 8px;
 	vertical-align: middle;
 }
 .telegram_section a,
@@ -379,6 +455,16 @@ button span {
 	padding-top: 30px;
 	padding-bottom: 30px;
 }
+.popular_directions_list_item a {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	/* display: inline-block; */
+	transition: transform 0.2s ease-in-out;
+}
+.popular_directions_list_item a:hover {
+	transform: scale(1.1);
+}
 .uppercase {
 	text-transform: uppercase;
 }
@@ -388,12 +474,18 @@ button span {
 	flex: 1;
 	text-align: left;
 }
+.airline:hover {
+	text-decoration: underline;
+}
 
 .popular_directions_list .price {
 	text-align: right;
 }
 .price {
 	color: #ff4d4d;
+}
+.destination {
+	color: black;
 }
 
 .telegram_and_buses {
@@ -477,6 +569,9 @@ button span {
 .frequently_asked a {
 	color: #007bff;
 }
+.frequently_asked a:hover {
+	text-decoration: underline;
+}
 .frequently_asked li {
 	margin: 0 10px 10px 0;
 }
@@ -548,6 +643,9 @@ button span {
 
 .footer_information ul a {
 	color: black;
+}
+footer a:hover {
+	text-decoration: underline;
 }
 .footer_information ul {
 	list-style-type: none;
@@ -625,28 +723,27 @@ button span {
 	}
 
 	.header_menu_links {
-		/* position: absolute;
-		top: 60px;
-		right: -100%;
-		background: #333;
-		width: 200px;
+		display: flex;
+		z-index: 1;
+	}
+	.header_menu_links {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
 		height: 100vh;
+		background-color: #6e36f7;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		transition: 0.3s; */
-		display: none;
-	}
-
-	.header_menu_links ul {
-		flex-direction: column;
-		align-items: center;
-		gap: 20px;
+		transform: translateX(-100%);
+		transition: transform 0.3s ease;
 	}
 
 	.header_menu_links.open {
-		right: 0;
+		transform: translateX(0);
 	}
+
 	.languege {
 		display: none;
 	}
@@ -737,7 +834,6 @@ button span {
 	}
 
 	.footer_all_links a span {
-		/* display: none; */
 		content: url('../images/chevron-smooth-right.svg');
 	}
 	.line {
